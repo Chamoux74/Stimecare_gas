@@ -63,3 +63,15 @@ res.aov1 <- rstatix::anova_test(
 )
 
 get_anova_table(res.aov1 , correction = "auto")
+
+res.aov1 <- res.aov1 %>% add_xy_position(x = "instant_mesure")
+ttesttime$xmin <- c(2 , 2 , 2 , 3 , 3 , 4 , 2 , 2 , 2 , 3 , 3 , 4)
+ttesttime$xmax <- c(3 , 4 , 1 , 4 , 1 , 1, 3 , 4 , 1 , 4 , 1 , 1)
+
+plotCE +
+  stat_pvalue_manual(
+    ttesttime,
+    tip.length = 0 ,
+    hide.ns = TRUE ,
+    label = "p = {p.adj}"  , y.position = , color = "#FC4E07"
+  )
