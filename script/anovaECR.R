@@ -75,3 +75,17 @@ plotCE +
     hide.ns = TRUE ,
     label = "p = {p.adj}"  , y.position = , color = "#FC4E07"
   )
+
+ttesttime <- dfgaz %>%
+  group_by(condition) %>%
+  pairwise_t_test(
+    ECR ~ instant, paired = TRUE,
+    p.adjust.method = "bonferroni"
+  )
+ttesttime
+
+ttestrfdinstantmesure <- dfgaz %>%
+  pairwise_t_test(
+    rfd ~ instant_mesure , paired = TRUE,
+    p.adjust.method = "bonferroni"
+  )
